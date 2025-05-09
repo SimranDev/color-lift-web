@@ -5,10 +5,7 @@
   >
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center gap-2">
-        <Palette class="h-6 w-6 text-indigo-600" />
-        <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-          ColorLift
-        </span>
+        <img src="/src/assets/logo.png" alt="ColorLift" class="h-8 md:h-10" />
       </div>
 
       <div class="hidden md:flex space-x-8">
@@ -53,7 +50,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { Palette, Menu, X } from "lucide-vue-next";
+import { Menu, X } from "lucide-vue-next";
 
 const scrolled = ref(false);
 const mobileMenuOpen = ref(false);

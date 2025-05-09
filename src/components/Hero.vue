@@ -19,7 +19,7 @@
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
             <a href="#install" class="btn-primary">Install Extension</a>
             <a
-              href="https://github.com/yourusername/colorlift"
+              href="https://github.com/SimranDev/color-lift"
               target="_blank"
               rel="noopener"
               class="btn-secondary flex items-center gap-2"
@@ -97,8 +97,8 @@
             </div>
           </div>
           <!-- Decorative elements -->
-          <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-indigo-100 rounded-xl rotate-12 z-0"></div>
-          <div class="absolute -top-10 -left-10 w-20 h-20 bg-violet-100 rounded-xl -rotate-12 z-0"></div>
+          <div id="anim-infinity" class="absolute -bottom-10 -right-10 w-32 h-32 bg-indigo-100 rounded-xl rotate-12 z-0"></div>
+          <div id="anim-infinity-2" class="absolute -top-20 -left-20 w-20 h-20 bg-violet-100 rounded-xl -rotate-12 z-0"></div>
         </div>
       </div>
     </div>
@@ -150,5 +150,13 @@ const activeColor = ref<ColorSwatch | null>(null);
 
 .color-swatch:hover {
   @apply transform scale-110 z-10 shadow-md;
+}
+
+#anim-infinity {
+  animation: moveInfinity 15s linear infinite;
+}
+
+#anim-infinity-2 {
+  animation: moveInfinity 25s linear infinite;
 }
 </style>
