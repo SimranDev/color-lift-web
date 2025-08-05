@@ -144,6 +144,8 @@ const activeColor = ref<ColorSwatch | null>(null);
 </script>
 
 <style scoped>
+@reference "tailwindcss";
+
 .color-swatch {
   @apply h-8 rounded transition-transform duration-200 relative;
 }
