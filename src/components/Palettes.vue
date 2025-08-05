@@ -10,7 +10,10 @@
         <div
           v-for="(palette, index) in colorPalettes"
           :key="index"
-          class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300"
+          :class="[
+            'rounded-xl shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300',
+            palette.isComingSoon ? 'bg-slate-200' : 'bg-white',
+          ]"
         >
           <div class="h-2 flex">
             <div
@@ -22,7 +25,15 @@
           </div>
           <div class="p-6">
             <div class="flex justify-between items-center mb-4">
-              <h3 class="text-lg font-semibold">{{ palette.name }}</h3>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg font-semibold">{{ palette.name }}</h3>
+                <span
+                  v-if="palette.isComingSoon"
+                  class="px-2 py-1 bg-orange-100 text-orange-600 text-xs rounded-full font-medium border border-orange-200"
+                >
+                  Coming Soon
+                </span>
+              </div>
               <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">{{ palette.colorCount }} colors</span>
             </div>
             <p class="text-gray-600 text-sm mb-4">{{ palette.description }}</p>
@@ -79,6 +90,7 @@ interface ColorPalette {
   colors: string[];
   preview: string[];
   details: PaletteDetail[];
+  isComingSoon?: boolean;
 }
 
 const expandedPalette = reactive<Record<number, boolean>>({});
@@ -145,6 +157,7 @@ const colorPalettes: ColorPalette[] = [
     description: "An open-source color scheme optimized for UI components",
     colors: ["#fa5252", "#ff922b", "#fab005", "#40c057", "#339af0"],
     preview: ["#d0ebff", "#a5d8ff", "#74c0fc", "#4dabf7", "#339af0"],
+    isComingSoon: true,
     details: [
       { name: "blue-2", color: "#d0ebff" },
       { name: "blue-4", color: "#a5d8ff" },
@@ -163,6 +176,7 @@ const colorPalettes: ColorPalette[] = [
     description: "Beautiful flat colors that work great in modern designs",
     colors: ["#1abc9c", "#3498db", "#9b59b6", "#f1c40f", "#e74c3c"],
     preview: ["#3498db", "#2980b9", "#e74c3c", "#c0392b", "#1abc9c"],
+    isComingSoon: true,
     details: [
       { name: "Turquoise", color: "#1abc9c" },
       { name: "Emerald", color: "#2ecc71" },
@@ -201,7 +215,6 @@ const toggleColorInfo = (id: number) => {
 const copyColor = (color: string) => {
   navigator.clipboard.writeText(color);
 
-  // Could add a toast notification here
   console.log(`Copied ${color} to clipboard`);
 };
 </script>
