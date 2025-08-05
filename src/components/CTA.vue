@@ -10,11 +10,6 @@
         <p class="subtitle mb-10">Access colors instantly and speed up your design process with ColorLift.</p>
 
         <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
-          <a href="#" class="btn-primary flex items-center justify-center gap-2 px-8 py-4">
-            <Chrome class="h-5 w-5" />
-            <span>Add to Chrome</span>
-          </a>
-
           <div class="flex items-center text-gray-500">
             <Star class="h-4 w-4 text-amber-400" />
             <Star class="h-4 w-4 text-amber-400" />
@@ -47,5 +42,5 @@
 </template>
 
 <script setup lang="ts">
-import { Chrome, Star } from "lucide-vue-next";
+import { Star } from "lucide-vue-next";
 </script>
