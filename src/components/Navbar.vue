@@ -121,7 +121,6 @@ const mobileMenuOpen = ref(false);
 const navItems = [
   { label: "Features", href: "#features" },
   { label: "Palettes", href: "#palettes" },
-  { label: "How It Works", href: "#how-it-works" },
 ];
 
 const toggleMobileMenu = () => {
