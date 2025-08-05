@@ -28,11 +28,11 @@
         <div class="mt-16 border border-gray-200 rounded-lg p-6 bg-white/50 backdrop-blur-sm">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <div class="text-4xl font-bold text-indigo-600 mb-2">500+</div>
+              <div class="text-4xl font-bold text-indigo-600 mb-2">400+</div>
               <p class="text-gray-600">Colors available</p>
             </div>
             <div>
-              <div class="text-4xl font-bold text-indigo-600 mb-2">10+</div>
+              <div class="text-4xl font-bold text-indigo-600 mb-2">5+</div>
               <p class="text-gray-600">Design systems</p>
             </div>
             <div>
