@@ -19,7 +19,38 @@
         </a>
       </div>
 
-      <a href="#install" class="btn-primary"> Install Extension </a>
+      <div class="hidden md:flex space-x-3">
+        <a
+          href="https://chromewebstore.google.com/detail/colorlift/pdlbgfbmijdmejbmjababcdblgpipgdn"
+          class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+          title="Install for Chrome"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/src/assets/chrome.png" alt="Chrome" class="h-5 w-5" />
+          Chrome
+        </a>
+        <a
+          href="http://addons.mozilla.org/en-US/firefox/addon/colorlift/"
+          class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+          title="Install for Firefox"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/src/assets/firefox.webp" alt="Firefox" class="h-5 w-5" />
+          Firefox
+        </a>
+        <a
+          href="https://github.com/SimranDev/color-lift"
+          class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm hover:shadow-md"
+          title="View on GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/src/assets/github.png" alt="GitHub" class="h-5 w-5" />
+          Open Source
+        </a>
+      </div>
 
       <button class="md:hidden text-gray-600" @click="toggleMobileMenu">
         <Menu v-if="!mobileMenuOpen" class="h-6 w-6" />
@@ -43,6 +74,38 @@
         >
           {{ item.label }}
         </a>
+        <div class="pt-2 border-t border-gray-200">
+          <a
+            href="https://github.com/SimranDev/color-lift-web"
+            class="flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="closeMobileMenu"
+          >
+            <img src="/src/assets/github.png" alt="GitHub" class="h-5 w-5" />
+            Open Source
+          </a>
+          <a
+            href="https://chromewebstore.google.com/detail/colorlift/pdlbgfbmijdmejbmjababcdblgpipgdn"
+            class="flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="closeMobileMenu"
+          >
+            <img src="/src/assets/chrome.png" alt="Chrome" class="h-5 w-5" />
+            Install for Chrome
+          </a>
+          <a
+            href="http://addons.mozilla.org/en-US/firefox/addon/colorlift/"
+            class="flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-sm"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="closeMobileMenu"
+          >
+            <img src="/src/assets/firefox.webp" alt="Firefox" class="h-5 w-5" />
+            Install for Firefox
+          </a>
+        </div>
       </div>
     </div>
   </nav>

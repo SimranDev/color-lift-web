@@ -1,104 +1,55 @@
 <template>
-  <section class="pt-32 pb-20 px-4 overflow-hidden relative">
+  <section
+    ref="heroSection"
+    class="pt-42 pb-28 px-4 overflow-hidden relative"
+    @mousemove="handleMouseMove"
+    @mouseleave="resetTransform"
+  >
     <!-- Background gradient elements -->
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200 rounded-full opacity-20 blur-3xl"></div>
     <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-violet-200 rounded-full opacity-20 blur-3xl"></div>
 
     <div class="container mx-auto">
-      <div class="flex flex-col lg:flex-row gap-12 items-center">
-        <div class="flex-1 max-w-xl">
-          <h1 class="heading-primary">
+      <div class="flex flex-col lg:flex-row gap-12 items-center justify-center">
+        <div class="flex-1 max-w-xl mx-auto text-center lg:text-left">
+          <h1 class="heading-primary leading-14">
             Quick access to
-            <span class="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">color palettes</span> for
-            everyone
+            <span class="rainbow-text">color palettes</span> for everyone
           </h1>
           <p class="subtitle mt-6">
             Access popular design system colors like Material UI, Tailwind, and Radix directly in your browser. Perfect for
             developers and designers working with Figma, VS Code, or any design tool.
           </p>
-          <div class="mt-10 flex flex-col sm:flex-row gap-4">
-            <a href="#install" class="btn-primary">Install Extension</a>
-            <a
-              href="https://github.com/SimranDev/color-lift"
-              target="_blank"
-              rel="noopener"
-              class="btn-secondary flex items-center gap-2"
+
+          <div class="mt-8 flex items-center justify-center lg:justify-start text-gray-500 text-sm flex-wrap gap-4">
+            <div
+              class="flex items-center bg-gradient-to-r from-green-50 to-emerald-50 px-3 py-1 rounded-full border border-green-200"
             >
-              <Github class="h-4 w-4" />
-              <span>View on GitHub</span>
-            </a>
-          </div>
-          <div class="mt-8 flex items-center text-gray-500 text-sm flex-wrap gap-4">
-            <div class="flex items-center">
-              <Check class="h-4 w-4 text-green-500 mr-2" />
-              <span>Free & Open Source</span>
+              <div class="flex items-center">
+                <Code class="h-4 w-4 mr-2 text-green-500" />
+                <span class="text-green-700 font-medium">Free & Open Source</span>
+              </div>
             </div>
-            <div class="flex items-center">
-              <Chrome class="h-4 w-4 mr-2" />
-              <span>Chrome extension</span>
-            </div>
-            <div class="flex items-center">
-              <Users class="h-4 w-4 mr-2" />
-              <span>Community driven</span>
+
+            <div
+              class="flex items-center bg-gradient-to-r from-amber-50 to-yellow-50 px-3 py-1 rounded-full border border-amber-200"
+            >
+              <div class="flex items-center">
+                <Award class="h-4 w-4 mr-2 text-amber-500" />
+                <span class="text-amber-700 font-medium">Google Featured Badge</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="flex-1 relative">
-          <div class="relative z-10 bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-100">
-            <div class="h-10 bg-gray-100 flex items-center px-4 gap-2">
-              <div class="flex space-x-2">
-                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <div class="text-xs text-gray-500 ml-2">ColorLift Extension</div>
-            </div>
-            <div class="p-6">
-              <div class="mb-4">
-                <h3 class="text-sm font-medium mb-2">Tailwind CSS</h3>
-                <div class="grid grid-cols-10 gap-2">
-                  <div
-                    v-for="(color, i) in tailwindBlueColors"
-                    :key="i"
-                    class="color-swatch group cursor-pointer relative"
-                    :style="{ backgroundColor: color.hex }"
-                    @mouseenter="activeColor = color"
-                    @mouseleave="activeColor = null"
-                  >
-                    <div
-                      v-if="activeColor === color"
-                      class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded whitespace-nowrap"
-                    >
-                      {{ color.hex }} {{ color.name }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 class="text-sm font-medium mb-2">Material UI</h3>
-                <div class="grid grid-cols-10 gap-2">
-                  <div
-                    v-for="(color, i) in muiPurpleColors"
-                    :key="i"
-                    class="color-swatch group cursor-pointer relative"
-                    :style="{ backgroundColor: color.hex }"
-                    @mouseenter="activeColor = color"
-                    @mouseleave="activeColor = null"
-                  >
-                    <div
-                      v-if="activeColor === color"
-                      class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded whitespace-nowrap"
-                    >
-                      {{ color.hex }} {{ color.name }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Decorative elements -->
-          <div id="anim-infinity" class="absolute -bottom-10 -right-10 w-32 h-32 bg-indigo-100 rounded-xl rotate-12 z-0"></div>
-          <div id="anim-infinity-2" class="absolute -top-20 -left-20 w-20 h-20 bg-violet-100 rounded-xl -rotate-12 z-0"></div>
+        <!-- Screenshot-->
+        <div ref="screenshotContainer" class="flex-1 relative mx-auto flex justify-center">
+          <img
+            ref="screenshotImg"
+            src="/src/assets/screenshot.png"
+            alt="Color Lift Extension Screenshot"
+            class="w-auto h-auto max-h-[560px] rounded-lg transition-transform duration-300 ease-out screenshot-shadow"
+            :style="imageTransform"
+          />
         </div>
       </div>
     </div>
@@ -106,59 +57,64 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { Check, Chrome, Github, Users } from "lucide-vue-next";
+import { Award, Code } from "lucide-vue-next";
+import { ref, computed } from "vue";
 
-interface ColorSwatch {
-  name: string;
-  hex: string;
-}
+const heroSection = ref<HTMLElement | null>(null);
+const screenshotContainer = ref<HTMLElement | null>(null);
+const screenshotImg = ref<HTMLElement | null>(null);
+const mouseX = ref(0);
+const mouseY = ref(0);
 
-const tailwindBlueColors = [
-  { name: "blue-50", hex: "#eff6ff" },
-  { name: "blue-100", hex: "#dbeafe" },
-  { name: "blue-200", hex: "#bfdbfe" },
-  { name: "blue-300", hex: "#93c5fd" },
-  { name: "blue-400", hex: "#60a5fa" },
-  { name: "blue-500", hex: "#3b82f6" },
-  { name: "blue-600", hex: "#2563eb" },
-  { name: "blue-700", hex: "#1d4ed8" },
-  { name: "blue-800", hex: "#1e40af" },
-  { name: "blue-900", hex: "#1e3a8a" },
-];
+const imageTransform = computed(() => {
+  const rotateX = (mouseY.value - 0.5) * 10; // Max 5 degrees rotation
+  const rotateY = (0.5 - mouseX.value) * 10; // Max 5 degrees rotation
+  const translateX = (mouseX.value - 0.5) * 20; // Max 10px movement
+  const translateY = (mouseY.value - 0.5) * 20; // Max 10px movement
 
-const muiPurpleColors = [
-  { name: "purple-50", hex: "#f5f3ff" },
-  { name: "purple-100", hex: "#ede9fe" },
-  { name: "purple-200", hex: "#ddd6fe" },
-  { name: "purple-300", hex: "#c4b5fd" },
-  { name: "purple-400", hex: "#a78bfa" },
-  { name: "purple-500", hex: "#8b5cf6" },
-  { name: "purple-600", hex: "#7c3aed" },
-  { name: "purple-700", hex: "#6d28d9" },
-  { name: "purple-800", hex: "#5b21b6" },
-  { name: "purple-900", hex: "#4c1d95" },
-];
+  return `transform: perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(${translateX}px) translateY(${translateY}px);`;
+});
 
-const activeColor = ref<ColorSwatch | null>(null);
+const handleMouseMove = (event: MouseEvent) => {
+  if (!heroSection.value) return;
+
+  const rect = heroSection.value.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  // Normalize mouse position to -0.5 to 0.5 range
+  mouseX.value = (event.clientX - centerX) / rect.width;
+  mouseY.value = (event.clientY - centerY) / rect.height;
+};
+
+const resetTransform = () => {
+  mouseX.value = 0;
+  mouseY.value = 0;
+};
 </script>
 
 <style scoped>
-@reference "tailwindcss";
-
-.color-swatch {
-  @apply h-8 rounded transition-transform duration-200 relative;
+.rainbow-text {
+  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowShift 12s ease-in-out infinite;
 }
 
-.color-swatch:hover {
-  @apply transform scale-110 z-10 shadow-md;
+@keyframes rainbowShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
-#anim-infinity {
-  animation: moveInfinity 15s linear infinite;
-}
-
-#anim-infinity-2 {
-  animation: moveInfinity 25s linear infinite;
+.screenshot-shadow {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 </style>
